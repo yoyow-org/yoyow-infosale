@@ -1,6 +1,3 @@
-[TOC]
-##yoyow1.2 API
- by 马小明
 ### 1.查看标题
 <pre>
 <code>
