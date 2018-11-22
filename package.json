@@ -1,0 +1,34 @@
+{
+  "name": "yoyow-infosale",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "cross-env PORT=9000 babel-node ./bin/www",
+    "debug": "cross-env PORT=9000 nodemon ./bin/www --exec babel-node",
+    "build": "webpack --progress --colors"
+  },
+  "dependencies": {
+    "babel-loader": "^7.1.5",
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "cross-env": "^5.2.0",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.0",
+    "node_mysql": "git+https://github.com/bulangnisi/node-mysql.git",
+    "nodemon": "^1.17.5",
+    "promise-queue-plus": "git+https://github.com/cnwhy/promise-queue-plus.git",
+    "serve-favicon": "~2.4.5",
+    "yoyowjs-lib": "git+ssh://git@demo.yoyow.org:yoyowjs-lib.git",
+    "yoyowjs-ws": "git+ssh://git@demo.yoyow.org:yoyowjs-ws.git"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
+  }
+}
