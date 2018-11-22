@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+<head>
+    <meta charset='utf-8'>
+    <title>测试</title>
+    <script src="https:/code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+    .opration{
+        padding: 10px;
+    }
+        
+    .opration ul,li{
+        list-style: none;
+        padding: 5px 0px;
+        float: left;
+    }
+    .opration li{
+        padding:0px 5px;
+    }
+    fieldset{width:100%;}
+    </style>
+</head>
+<body>
+<h1 id="test">测试</h1>
+<div class="opration">
+    <fieldset>
+        <legend>基础</legend>
+        <ul>
+            <li><button onclick="getStatus();">服务状态</button></li>
+            <li><button onclick="getConfig();">提取中间号</button></li>
+            <li><button onclick="importAccount();">导入账号</button></li>
+        </ul>
+    </fieldset>
+    <fieldset>
+        <legend>标题</legend>
+        <ul>
+            <li><button onclick="getTitle();">提取标题</button></li>
+            <li><button onclick="addTitle();">添加(修改)标题</button></li>
+        </ul>
+    </fieldset>
+    <fieldset>
+        <legend>规则</legend>
+        <ul>
+            <li><button onclick="addRule();">添加规则</button></li>
+            <li><button onclick="editRule();">修改规则</button></li>
+            <li><button onclick="deleteRule();">删除规则</button></li>
+        </ul>
+    </fieldset>
+    <fieldset>
+        <legend>记录</legend>
+        <ul>
+            <li><button onclick="getOrders();">获取用户记录</button></li>
+            <li><button onclick="getOrder();">获取记录</button></li>
+            <li><button onclick="addOrder();">添加记录</button></li>
+            <li><button onclick="deleteOrder();">删除记录</button></li>
+        </ul>
+    </fieldset>
+    <fieldset>
+        <legend>测试输出</legend>
+        <code id="return"></code>
+    </fieldset>
+</div>
+
+<script>
+$(document).ready(function(){
+    console.log("~~~~~~~~~~",$("#test").html());
+});
+
+function getStatus(){
+    $("#return").html('-------loading-------');
+    $.ajax({
+       url: "/resource",
+        method:"GET",
+        success: function(result) {
+            $("#return").html(JSON.stringify(result));
+        },
+        error:function(result){
+            $("#return").html(JSON.stringify(result));
+        }
+    });
+}
+
+function getConfig(){
+    $("#return").html('-------loading-------');
+    $.ajax({
+       url: "/resource/config",
+        method:"GET",
+        success: function(result) {
+            $("#return").html(JSON.stringify(result));
+        },
+        error:function(result){
+            $("#return").html(JSON.stringify(result));
+        }
+    });
+}
+
+function importAccount(){
+    $("#return").html('-------loading-------');
+    $.ajax({
+       url: "https://download.yoyow.org/resource/import",
+        method:"POST",
+        data: {
+            uid: 248363066
+        },
+        success: function(result) {
+            $("#return").html(JSON.stringify(result));
+        },
+        error:function(result){
+            $("#return").html(JSON.stringify(result));
+        }
+    });
+}
+
+function getTitle(){
+    $("#return").html('-------loading-------');
+    $.ajax({
+       url: "/resource/title/217287341",
+        method:"GET",
+        success: function(result) {
+            $("#return").html(JSON.stringify(result));
+        },
+        error:function(result){
+            $("#return").html(JSON.stringify(result));
+        }
+    });
+}
+
+function addTitle(){
+    $("#return").html('-------loading-------');
+    $.ajax({
+       url: "/resource/title",
+        method:"POST",
+        data: {
+            uid: 217895094,
+            title:"测试 标题"
+        },
+        success: function(result) {
+            $("#return").html(JSON.stringify(result));
+        },
+        error:function(result){
+            $("#return").html(JSON.stringify(result));
+        }
+    });
+}
+
+function addRule(){
+    $("#return").html('-------loading-------');
+    $.ajax({
+       url: "/resource/rule",
+        method:"POST",
+        data: {
+            rid:0,
+            uid: 217895094,
+            title:"测试 规则 标题",
+            content:"731355c4fe56b942133f73e1f2ba4c0d4b926a42c3288e79b8768c2e847a1899",
+            amount:20000000,
+            asset_id:0,
+            expiration_date:1534129467922
+        },
+        success: function(result) {
+            $("#return").html(JSON.stringify(result));
+        },
+        error:function(result){
+            $("#return").html(JSON.stringify(result));
+        }
+    });
+}
+
+function editRule(){
+    $("#return").html('-------loading-------');
+    $.ajax({
+       url: "/resource/rule",
+        method:"POST",
+        data: {
+            rid:3,
+            uid: 217895094,
+            title:"测试 修改 规则",
+            content:"731355c4fe56b942133f73e1f2ba4c0d4b926a42c3288e79b8768c2e847a1899",
+            amount:20,
+            asset_id:0,
+            expiration_date:null
+        },
+        success: function(result) {
+            $("#return").html(JSON.stringify(result));
+        },
+        error:function(result){
+            $("#return").html(JSON.stringify(result));
+        }
+    });
+}
+
+function deleteRule(){
+    $("#return").html('-------loading-------');
+    $.ajax({
+       url: "/resource/rule/4",
+        method:"DELETE",
+        success: function(result) {
+            $("#return").html(JSON.stringify(result));
+        },
+        error:function(result){
+            $("#return").html(JSON.stringify(result));
+        }
+    });
+}
+
+function getOrders(){
+    $("#return").html('-------loading-------');
+    $.ajax({
+       url: "/resource/orders/217895094",
+        method:"GET",
+        success: function(result) {
+            $("#return").html(JSON.stringify(result));
+        },
+        error:function(result){
+            $("#return").html(JSON.stringify(result));
+        }
+    });
+}
+
+function getOrder(){
+    $("#return").html('-------loading-------');
+    $.ajax({
+       url: "/resource/order/3",
+        method:"GET",
+        success: function(result) {
+            $("#return").html(JSON.stringify(result));
+        },
+        error:function(result){
+            $("#return").html(JSON.stringify(result));
+        }
+    });
+}
+
+function addOrder(){
+    $("#return").html('-------loading-------');
+    $.ajax({
+       url: "/resource/order",
+        method:"POST",
+        data: {
+            rid:138,
+            uid: 217895094
+        },
+        success: function(result) {
+            $("#return").html(JSON.stringify(result));
+        },
+        error:function(result){
+            $("#return").html(JSON.stringify(result));
+        }
+    });
+}
+
+function deleteOrder(){
+    $("#return").html('-------loading-------');
+    $.ajax({
+       url: "/resource/order/3",
+        method:"DELETE",
+        success: function(result) {
+            $("#return").html(JSON.stringify(result));
+        },
+        error:function(result){
+            $("#return").html(JSON.stringify(result));
+        }
+    });
+}
+
+</script>
+</body>
+</html>
